@@ -1,13 +1,22 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import "./App.css";
-import { AlwaysSuspend } from "./components/AlwaysSuspend";
+import { RenderingNotifier } from "./components/RenderingNotifier";
+import { SometimesSuspend } from "./components/SometimesSuspend";
 
 function App() {
+  const [count, setCount] = useState(0);
   return (
     <div className="text-center">
       <h1 className="text-2xl">React App!</h1>
+      <RenderingNotifier name="outside-Suspense" />
       <Suspense fallback={<p>Loading...</p>}>
-        <AlwaysSuspend />
+        <SometimesSuspend />
+        <RenderingNotifier name="inside-Suspense" />
+        <div>
+          <button className="border p-1" onClick={() => setCount((c) => c + 1)}>
+            {count}
+          </button>
+        </div>
       </Suspense>
     </div>
   );
