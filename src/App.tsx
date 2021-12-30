@@ -14,6 +14,8 @@ function App() {
     <div className="text-center">
       <h1 className="text-2xl">React App!</h1>
       <Suspense fallback={<p>Loading...</p>}>
+        {/* ↓表示されない */}
+        <p>ここは表示される？</p>
         <AlwaysSuspend />
       </Suspense>
     </div>
